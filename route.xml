@@ -1,0 +1,19 @@
+<config>
+  <!-- allowed log levels - crit, error, warn, debug -->
+  <log_level>debug</log_level>
+  <route>
+    <dest>192.168.29.0</dest>
+    <mask> 24 </mask>
+    <!-- As KNI, netlink modules are not yet implemented
+         nhop will hold only outgoing port number -->
+    <nhop> 0 </nhop>
+  </route>
+  <route>
+    <dest>192.168.29.58</dest>
+    <mask> 32 </mask>
+    <!-- As KNI, netlink modules are not yet implemented
+         nhop will hold only outgoing port number -->
+    <nhop> 1 </nhop>
+  </route>
+
+</config>

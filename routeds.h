@@ -1,3 +1,4 @@
+/*
 MIT License
 
 Copyright (c) 2019 Bharath Paulraj <bharathpaul@gmail.com>
@@ -19,3 +20,21 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+*/
+
+
+
+#include <rte_lpm.h>
+
+/* As there is no ARP and KNI modules, pass outpot as u32NHop,
+ */
+static inline int32_t lpmAddv4Route (uint32_t u32DstIp, uint8_t u8Mask, 
+                                     uint32_t u32Nhop)
+{
+  return (rte_lpm_add (vRouterg.pLpmv4, u32DstIp, u8Mask, u32Nhop));
+}
+
+static inline int32_t lpmDelv4Route (uint32_t u32DstIp, uint8_t u8Mask)
+{
+  return (rte_lpm_delete (vRouterg.pLpmv4, u32DstIp, u8Mask));
+}
